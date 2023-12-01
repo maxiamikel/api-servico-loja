@@ -18,6 +18,13 @@ public class ExceptionHandlerController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<StandardError> dataIntegrityViolationException(DataIntegrityViolationException e) {
+        StandardError err = new StandardError(System.currentTimeMillis(), e.getMessage(),
+                HttpStatus.CONFLICT.value());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(err);
+    }
+
     /*
      * @ExceptionHandler(MethodArgumentTypeMismatchException.class)
      * public ResponseEntity<StandardError>

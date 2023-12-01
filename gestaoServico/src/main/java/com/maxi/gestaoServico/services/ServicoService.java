@@ -49,4 +49,12 @@ public class ServicoService {
         servico = repo.save(servico);
         return servico;
     }
+
+    public Servico updateServico(ServicoDTO objDTO, Long id) {
+        Servico obj = repo.findById(id).get();
+        if (obj != null) {
+            return null;
+        }
+        return null;
+    }
 }
